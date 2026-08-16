@@ -1,17 +1,33 @@
-buildTypes {
-    release {
-        minifyEnabled false
-        debuggable false
-
-        signingConfig signingConfigs.release
-    }
+plugins {
+    id 'com.android.application'
 }
 
-signingConfigs {
-    release {
-        storeFile file("../kutak.keystore")
-        storePassword System.getenv("CM_KEYSTORE_PASSWORD")
-        keyAlias System.getenv("CM_KEY_ALIAS")
-        keyPassword System.getenv("CM_KEY_PASSWORD")
+android {
+    namespace 'com.kutak.launcher'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.kutak.launcher"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../kutak.keystore")
+            storePassword System.getenv("CM_KEYSTORE_PASSWORD")
+            keyAlias System.getenv("CM_KEY_ALIAS")
+            keyPassword System.getenv("CM_KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            signingConfig signingConfigs.release
+        }
     }
 }
