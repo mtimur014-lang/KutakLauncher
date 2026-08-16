@@ -1,2 +1,12 @@
-scripts:
-  - gradle assembleRelease
+workflows:
+  android-build:
+    name: Kutak Launcher APK
+
+    max_build_duration: 60
+
+    scripts:
+      - chmod +x gradlew
+      - ./gradlew assembleRelease
+
+    artifacts:
+      - app/build/outputs/**/*.apk
